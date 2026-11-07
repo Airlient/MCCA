@@ -1,9 +1,10 @@
 {
     "Shopping": {
         "next": [
-            "子任务_关闭公告",
+            "DailyGift",
             "Shop",
-            "子任务_进入首页"
+            "[JumpBack]子任务_关闭公告",
+            "[JumpBack]子任务_进入首页"
         ]
     },
     "Shop": {
@@ -11,7 +12,12 @@
         "expected": [
             "补给站"
         ],
-        "roi": [1008, 593, 111, 118],
+        "roi": [
+            980,
+            580,
+            170,
+            135
+        ],
         "action": "Click",
         "next": [
             "DailyGift",
@@ -20,59 +26,170 @@
     },
     "DailyGift": {
         "recognition": "OCR",
-        "expected": [
-            "礼包"
-        ],
+        "expected": "礼包",
         "roi": [
-            362,
-            57,
-            166,
-            89
+            90,
+            330,
+            130,
+            80
         ],
         "action": "Click",
-        "post_delay": 2000,
+        "post_delay": 600,
         "next": [
+            "免费礼包_已领取",
             "DailyGiftYes",
-         
-            "进入首页"
+            "免费礼包_完成"
         ]
     },
     "DailyGiftYes": {
-        "recognition": "OCR",
-        "expected": "免费",
-        "roi": [273, 522, 985, 79],
-        "action":"Click",
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "每日免费礼包",
+                "roi": [
+                    250,
+                    440,
+                    1000,
+                    140
+                ],
+                "sub_name": "daily_gift"
+            },
+            {
+                "recognition": "OCR",
+                "expected": "^免费$",
+                "roi": "daily_gift",
+                "roi_offset": [
+                    -40,
+                    25,
+                    80,
+                    100
+                ]
+            }
+        ],
+        "action": "Click",
+        "post_delay": 500,
         "next": [
-            "ForFree",
-            "进入首页"
+            "ForFree"
         ]
     },
     "ForFree": {
         "recognition": "OCR",
-        "expected": [
-            "免费"
+        "expected": "^免费$",
+        "roi": [
+            220,
+            130,
+            850,
+            480
         ],
-        "roi": [163, 9, 409, 239],
         "next": [
-            "Purchase",
-            "ForFree"
+            "Purchase"
         ]
     },
     "Purchase": {
-        "recognition": "OCR",
-        "expected": [
-            "购买"
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "^免费$",
+                "roi": [
+                    220,
+                    130,
+                    850,
+                    380
+                ]
+            },
+            {
+                "recognition": "OCR",
+                "expected": "^购买$",
+                "roi": [
+                    750,
+                    500,
+                    260,
+                    110
+                ]
+            }
         ],
+        "box_index": 1,
+        "action": "Click",
+        "post_delay": 700,
+        "next": [
+            "[JumpBack]子任务_获得物品",
+            "进入首页"
+        ]
+    },
+    "免费礼包_全部礼包": {
+        "recognition": "OCR",
+        "expected": "^全部礼包$",
         "roi": [
-            758,
-            513,
-            191,
-            75
+            250,
+            85,
+            300,
+            90
         ],
         "action": "Click",
-        "post_delay": 1000,
+        "post_delay": 600,
         "next": [
-            "子任务_获得物品",
+            "免费礼包_滑到末尾"
+        ]
+    },
+    "免费礼包_滑到末尾": {
+        "action": "Swipe",
+        "begin": [
+            1150,
+            430,
+            15,
+            15
+        ],
+        "end": [
+            300,
+            430,
+            15,
+            15
+        ],
+        "duration": 350,
+        "repeat": 20,
+        "repeat_delay": 100,
+        "post_delay": 500,
+        "next": [
+            "免费礼包_已领取",
+            "DailyGiftYes"
+        ]
+    },
+    "免费礼包_已领取": {
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "OCR",
+                "expected": "每日免费礼包",
+                "roi": [
+                    250,
+                    440,
+                    1000,
+                    140
+                ],
+                "sub_name": "daily_gift"
+            },
+            {
+                "recognition": "OCR",
+                "expected": "售罄|已售罄",
+                "roi": "daily_gift",
+                "roi_offset": [
+                    -40,
+                    -350,
+                    80,
+                    450
+                ]
+            }
+        ],
+        "focus": "每日免费礼包已领取",
+        "next": [
+            "进入首页"
+        ]
+    },
+    "免费礼包_完成": {
+        "focus": "前五个礼包中没有每日免费礼包",
+        "next": [
             "进入首页"
         ]
     }

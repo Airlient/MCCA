@@ -18,7 +18,7 @@
 
 ## 使用说明
 
-下载地址：<https://github.com/MaaXYZ/MCCA/releases>
+下载地址：<https://github.com/Airlient/MCCA/releases>
 1. MuMu模拟器需要关闭模拟器设置中的“后台挂机时保活运行”
 2. 运行过程MaaPiCli窗口出现红字是正常的
 3. 模拟器不能有中文路径
@@ -49,10 +49,10 @@
 
 ## 图形化界面
 
-- 如果需要使用图形化界面，请下载 `MCCA-win-x86_64-with-gui-vXXX.zip`，目前只支持Windows
-- 图形化界面需要.NET8运行库，请自行安装
-- 解压后运行`MFAWPF.exe`即可
-- 本GUI由社区大佬[SweetSmellFox](https://github.com/SweetSmellFox)编写，相关项目见[MFAWPF](https://github.com/SweetSmellFox/MFAWPF)
+- 本地兼容包使用 [MFAAvalonia](https://github.com/MaaXYZ/MFAAvalonia) v2.16.4，目前只打包 Windows x64
+- 图形化界面需要 x64 .NET 10 Runtime
+- 解压后运行 `MFAAvalonia.exe`
+- 界面若提示资源更新到 `v1.7.5`，请勿更新；该提示指向未包含本地修复的旧上游资源
 
 ## 其他说明
 
@@ -62,22 +62,35 @@
 
 ## How to build
 
-**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaXYZ/MCCA/releases) 即可**
+**如果你要编译源码才看这节，否则直接 [下载](https://github.com/Airlient/MCCA/releases) 即可**
 
 0. 完整克隆本项目及子项目
 
     ```bash
-    git clone --recursive https://github.com/MaaXYZ/MCCA.git
+    git clone --recursive https://github.com/Airlient/MCCA.git
     ```
 
 1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中
 2. 安装
 
     ```python
-    python ./install.py
+    python ./tools/install.py
     ```
 
 生成的二进制及相关资源文件在 `install` 目录下
+
+### Windows 兼容性构建
+
+当前流程已将 `is_sub` / `interrupt` 迁移为 `[JumpBack]`。兼容包固定使用 MFAAvalonia v2.16.4 与其匹配的 MaaFramework v5.14.3。
+在仓库根目录运行以下命令，可使用固定版本的官方组件打包 Windows x64 版本：
+
+```powershell
+python tools/build_windows.py --output D:/AgentWorkSpace/builds/MCCA-win-x64-fixed-20261107
+```
+
+脚本会校验依赖压缩包的 SHA-256，生成程序目录、ZIP 和 `BUILD-MANIFEST.json`。
+输出目录必须尚不存在；启动其中的 `MFAAvalonia.exe`，需要 x64 .NET 10 Runtime。
+本地构建还包含已实机验证的每日礼包、限时贸易和周本活动横向翻页修复。
 
 ## 开发相关
 

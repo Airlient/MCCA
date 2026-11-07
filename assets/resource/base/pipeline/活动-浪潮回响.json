@@ -2,7 +2,7 @@
   "活动": {
     "next": [
       "活动_入口",
-      "子任务_进入首页"
+      "[JumpBack]子任务_进入首页"
     ]
   },
   "活动_入口": {
@@ -137,13 +137,12 @@
     "pre_delay":200,
     "action": "Click",
     "next": [
-      "活动_扫荡升级",
+      "[JumpBack]活动_扫荡升级",
       "活动_扫荡",
       "活动_扫荡奖励"
     ]
   },
   "活动_扫荡升级": {
-    "is_sub": true,
     "recognition": "TemplateMatch",
     "template": "Combat/DailyExplore_LevelUp.png",
     "roi": [
@@ -165,12 +164,11 @@
     "next": [
       "活动_无票券1",
       "活动_无票券2",
-      "活动_扫荡双倍标记",
+      "[JumpBack]活动_扫荡双倍标记",
       "活动_扫荡奖励"
     ]
   },
   "活动_扫荡双倍标记": {
-    "is_sub": true,
     "recognition": "OCR",
     "expected": [
       "开启"

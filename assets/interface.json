@@ -1,6 +1,6 @@
 {
     "name": "MCCA",
-    "url": "https://github.com/MaaXYZ/MCCA",
+    "url": "https://github.com/Airlient/MCCA",
     "mirrorchyan_rid": "MCCA",
     "mirrorchyan_multiplatform": true,
     "controller": [
@@ -1138,13 +1138,13 @@
                         "ActivityExploration_2": {
                             "next": [
                                 "ActivityExploration_3",
-                                "ActivityExploration_SwipeUp",
+                                "[JumpBack]ActivityExploration_SwipeUp",
                                 "ActivityExploration_2"
                             ]
                         },
                         "ActivityExploration_CombatEnd3": {
                             "next": [
-                                "子任务_获得物品",
+                                "[JumpBack]子任务_获得物品",
                                 "ActivityExploration_3",
                                 "ActivityExploration_CombatEnd3"
                             ]
@@ -1157,13 +1157,13 @@
                         "ActivityExploration_2": {
                             "next": [
                                 "ActivityExploration_第五关",
-                                "ActivityExploration_SwipeDown",
+                                "[JumpBack]ActivityExploration_SwipeDown",
                                 "ActivityExploration_2"
                             ]
                         },
                         "ActivityExploration_CombatEnd3": {
                             "next": [
-                                "子任务_获得物品",
+                                "[JumpBack]子任务_获得物品",
                                 "ActivityExploration_第五关",
                                 "ActivityExploration_CombatEnd3"
                             ]

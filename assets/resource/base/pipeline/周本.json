@@ -2,13 +2,14 @@
     "WeekInstance": {
         "next": [
             "首页_出击",
-            "子任务_进入首页"
+            "[JumpBack]子任务_进入首页"
         ]
     },
     "ActivityExploration": {
         "recognition": "OCR",
         "expected": [
-            "活动探索"
+            "活动探索",
+            "活动探系"
         ],
         "roi": [
             540,
@@ -20,7 +21,7 @@
         "post_delay": 2000,
         "next": [
             "ActivityExploration_1",
-            "ActivityExploration"
+            "ActivityExploration_翻页"
         ]
     },
     "ActivityExploration_1": {
@@ -29,10 +30,10 @@
             "碎星虚影"
         ],
         "roi": [
-            450,
-            443,
-            302,
-            98
+            250,
+            180,
+            850,
+            460
         ],
         "action": "Click",
         "post_delay": 3000,
@@ -40,6 +41,28 @@
             "ActivityExploration_Exist",
             "ActivityExploration_2",
             "ActivityExploration_1"
+        ]
+    },
+    "ActivityExploration_翻页": {
+        "action": "Swipe",
+        "begin": [
+            1100,
+            400,
+            20,
+            20
+        ],
+        "end": [
+            300,
+            400,
+            20,
+            20
+        ],
+        "duration": 700,
+        "post_delay": 700,
+        "max_hit": 8,
+        "next": [
+            "ActivityExploration_1",
+            "ActivityExploration_翻页"
         ]
     },
     "ActivityExploration_2": {
@@ -57,7 +80,7 @@
         "post_delay": 2000,
         "next": [
             "ActivityExploration_第五关",
-            "ActivityExploration_SwipeDown",
+            "[JumpBack]ActivityExploration_SwipeDown",
             "ActivityExploration_2"
         ]
     },
@@ -130,8 +153,8 @@
         "action": "Click",
         "post_delay": 2000,
         "next": [
-            "ActivityExploration_Comfirm",
-            "ActivityExploration_关闭第二队",
+            "[JumpBack]ActivityExploration_Comfirm",
+            "[JumpBack]ActivityExploration_关闭第二队",
             "ActivityExploration_Start_1",
             "ActivityExploration_Start",
             "ActivityExploration_Step_1"
@@ -151,15 +174,14 @@
         "action": "Click",
         "post_delay": 2000,
         "next": [
-            "ActivityExploration_Comfirm",
-            "ActivityExploration_关闭第二队",
+            "[JumpBack]ActivityExploration_Comfirm",
+            "[JumpBack]ActivityExploration_关闭第二队",
             "ActivityExploration_第五关Start_1",
             "ActivityExploration_第五关Start",
             "ActivityExploration_第五关Step_1"
         ]
     },
     "ActivityExploration_Comfirm": {
-        "is_sub": true,
         "recognition": "OCR",
         "expected": [
             "开启"
@@ -174,7 +196,6 @@
         "post_delay": 2000
     },
     "ActivityExploration_关闭第二队": {
-        "is_sub": true,
         "recognition": "ColorMatch",
         "roi": [
             1153,
@@ -513,8 +534,8 @@
             59
         ],
         "next": [
-            "战斗_自动战斗",
-            "战斗_启用二倍速",
+            "[JumpBack]战斗_自动战斗",
+            "[JumpBack]战斗_启用二倍速",
             "ActivityExploration_CombatEnd1",
             "ActivityExploration_Combating1"
         ]
@@ -532,7 +553,7 @@
         ],
         "action": "Click",
         "next": [
-            "子任务_获得物品",
+            "[JumpBack]子任务_获得物品",
             "ActivityExploration_Step_3",
             "ActivityExploration_CombatEnd1"
         ]
@@ -547,8 +568,8 @@
             59
         ],
         "next": [
-            "战斗_自动战斗",
-            "战斗_启用二倍速",
+            "[JumpBack]战斗_自动战斗",
+            "[JumpBack]战斗_启用二倍速",
             "ActivityExploration_CombatEnd2",
             "ActivityExploration_Combating2"
         ]
@@ -566,7 +587,7 @@
         ],
         "action": "Click",
         "next": [
-            "子任务_获得物品",
+            "[JumpBack]子任务_获得物品",
             "ActivityExploration_Step_4",
             "ActivityExploration_CombatEnd2"
         ]
@@ -581,9 +602,9 @@
             59
         ],
         "next": [
-            "子任务_获得物品",
-            "战斗_自动战斗",
-            "战斗_启用二倍速",
+            "[JumpBack]子任务_获得物品",
+            "[JumpBack]战斗_自动战斗",
+            "[JumpBack]战斗_启用二倍速",
             "ActivityExploration_CombatEnd3",
             "ActivityExploration_Combating3"
         ]
@@ -601,13 +622,12 @@
         ],
         "action": "Click",
         "next": [
-            "子任务_获得物品",
+            "[JumpBack]子任务_获得物品",
             "ActivityExploration_第五关",
             "ActivityExploration_CombatEnd3"
         ]
     },
     "ActivityExploration_SwipeUp": {
-        "is_sub": true,
         "action": "Swipe",
         "begin": [
             617,
@@ -623,7 +643,6 @@
         ]
     },
     "ActivityExploration_SwipeDown": {
-        "is_sub": true,
         "action": "Swipe",
         "begin": [
             617,
