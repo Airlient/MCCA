@@ -24,7 +24,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True,
                         help="New output directory; must not already exist")
     parser.add_argument("--cache", type=Path, default=ROOT / "build" / "downloads")
-    parser.add_argument("--version", default="v1.7.6")
+    parser.add_argument("--version", default="v1.7.7")
     args = parser.parse_args()
     output = args.output.resolve()
     if output.exists():
@@ -81,13 +81,14 @@ def main():
     (output / "BUILD-MANIFEST.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     (output / "START-HERE.txt").write_text(
-        "MCCA v1.7.6 Windows x64 - JumpBack compatibility build\n\n"
+        f"MCCA {args.version} Windows x64 - compatibility build\n\n"
         "Start MFAAvalonia.exe. Requires the x64 .NET 10 Runtime.\n"
         "Configure your emulator before running tasks.\n"
         "This build migrates is_sub/interrupt to JumpBack and includes tested\n"
-        "repairs for daily gifts, time-limited trade, and weekly-stage paging.\n"
-        "Do not accept the in-app v1.7.5 resource update: it is the older\n"
-        "upstream resource and would replace these local repairs.\n"
+        "repairs for daily gifts, time-limited trade, weekly-stage paging,\n"
+        "daily boost popups, and the weekly activity entry.\n"
+        "Do not install an older resource package over this build, because it\n"
+        "would replace these local repairs.\n"
         "No existing installation or user settings have been copied.\n\n"
         "Upstream source and licenses:\n"
         "MCCA (MIT): https://github.com/Airlient/MCCA\n"

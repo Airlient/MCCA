@@ -151,6 +151,7 @@
         "post_delay": 2000,
         "next": [
             "[JumpBack]DailyExplore_MopUpDoubleMarkup",
+            "[JumpBack]DailyExplore_MopUpDoubleMarkup_Popup",
             "DailyExplore_MopUpAwards",
             "DailyExplore_NoFuel",
             "DailyExplore_MopUpStart"
@@ -212,15 +213,43 @@
     "DailyExplore_MopUpDoubleMarkup": {
         "recognition": "OCR",
         "expected": [
-            "开启"
+            "开启",
+            "使用",
+            "确认",
+            "确定"
         ],
         "roi": [
-            702,
-            398,
-            252,
-            100
+            600,
+            340,
+            500,
+            220
         ],
         "action": "Click",
+        "post_delay": 2000,
+        "next": []
+    },
+    "DailyExplore_MopUpDoubleMarkup_Popup": {
+        "recognition": "OCR",
+        "expected": [
+            "多倍",
+            "多倍掉落",
+            "多倍奖励",
+            "限时双倍",
+            "^.*(多倍|双倍|加成|开启).*$"
+        ],
+        "roi": [
+            300,
+            120,
+            680,
+            330
+        ],
+        "action": "Click",
+        "target": [
+            760,
+            420,
+            140,
+            60
+        ],
         "post_delay": 2000,
         "next": []
     },
